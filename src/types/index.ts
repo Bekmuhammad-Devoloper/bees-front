@@ -42,6 +42,7 @@ export interface Doctor {
   id: string;
   userId: string;
   user?: User;
+  fullName?: string;
   category?: Category;
   categoryId: string;
   specialization: string;
