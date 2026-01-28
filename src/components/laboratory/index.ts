@@ -1,0 +1,1 @@
+export { LaboratoryLayout } from './LaboratoryLayout';

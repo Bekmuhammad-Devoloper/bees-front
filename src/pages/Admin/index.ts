@@ -1,0 +1,18 @@
+export { AdminDashboard } from './AdminDashboard';
+export { DoctorProfilePage } from './DoctorProfilePage';
+export { HospitalReferralsPage } from './HospitalReferralsPage';
+export { AdminUsersPage } from './AdminUsersPage';
+export { AdminRoleRequestsPage } from './AdminRoleRequestsPage';
+export { AppointmentsPage } from './AppointmentsPage';
+export { default as DoctorsPage } from './DoctorsPage';
+export { CategoriesPage } from './CategoriesPage';
+export { ServicesPage } from './ServicesPage';
+export { ClinicsPage } from './ClinicsPage';
+export { NotificationsPage } from './NotificationsPage';
+export { PatientsPage } from './PatientsPage';
+export { LaboratoryPage } from './LaboratoryPage';
+export { PatronagePage } from './PatronagePage';
+export { HospitalsPage } from './HospitalsPage';
+export { DocumentsPage } from './DocumentsPage';
+export { AnalyticsPage } from './AnalyticsPage';
+export { SettingsPage } from './SettingsPage';
