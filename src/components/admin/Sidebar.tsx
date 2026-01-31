@@ -143,7 +143,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed, onToggle 
 
   return (
     <aside className={asideClass}>
-      <div className="h-16 flex items-center justify-between px-3 border-b border-gray-200 dark:border-gray-700">
+      <div className={`h-16 flex items-center border-b border-gray-200 dark:border-gray-700 ${collapsed ? 'flex-col justify-center py-2' : 'justify-between px-3'}`}>
         {!collapsed && (
           <div className="flex items-center gap-2">
             <img src="/logo.jpg" alt="Bee's Medical" className="w-10 h-10 rounded-lg object-cover" />
@@ -151,17 +151,19 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed, onToggle 
           </div>
         )}
         {collapsed && (
-          <img src="/logo.jpg" alt="Logo" className="w-10 h-10 rounded-lg object-cover mx-auto" />
+          <img src="/logo.jpg" alt="Logo" className="w-8 h-8 rounded-lg object-cover" />
         )}
-        {!collapsed && (
-          <button
-            onClick={onToggle}
-            title="Menuni yopish"
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-          >
+        <button
+          onClick={onToggle}
+          title={collapsed ? "Menuni ochish" : "Menuni yopish"}
+          className="p-1.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+        >
+          {collapsed ? (
+            <ChevronRightIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+          ) : (
             <ChevronLeftIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-          </button>
-        )}
+          )}
+        </button>
       </div>
 
       <nav className="p-3 space-y-1 overflow-y-auto h-[calc(100vh-8rem)]">

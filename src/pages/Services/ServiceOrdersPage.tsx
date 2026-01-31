@@ -60,9 +60,7 @@ const statusColors: Record<string, string> = {
 export const ServiceOrdersPage: React.FC = () => {
   const navigate = useNavigate();
   const { language } = useAppStore();
-  const { getBackgroundImage } = useThemeStore();
   const t = translations[language] || translations.uz;
-  const backgroundUrl = getBackgroundImage();
 
   const [orders, setOrders] = useState<ServiceOrder[]>([]);
   const [loading, setLoading] = useState(true);
@@ -101,16 +99,7 @@ export const ServiceOrdersPage: React.FC = () => {
   }
 
   return (
-    <div 
-      className="min-h-screen pb-20"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen pb-20 bg-white dark:bg-black text-black dark:text-white">
       <Header title={t.pageTitle} showBack />
 
       <div className="p-4">
@@ -139,7 +128,7 @@ export const ServiceOrdersPage: React.FC = () => {
 
                     <div className="flex items-center justify-between mt-3">
                       <span className="text-lg font-bold text-primary-500">
-                        {order.service?.price?.toLocaleString() || 0} {t.currency}
+                        {Math.floor(order.service?.price || 0).toLocaleString('ru-RU')} {t.currency}
                       </span>
                       <Badge variant={statusColors[order.status] as any || 'secondary'}>
                         {t.statuses[order.status as keyof typeof t.statuses] || order.status}

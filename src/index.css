@@ -21,71 +21,41 @@
   }
 }
 
-/* Aniq va tiniq matnlar */
+/* Aniq va tiniq matnlar - oddiy oq/qora ranglar */
 @layer utilities {
   .text-sharp {
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
     -webkit-font-smoothing: antialiased;
   }
   
   .dark .text-sharp {
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* Neon effektlari olib tashlandi - oddiy ranglar */
   .text-neon {
-    text-shadow:
-      0 0 6px #00ffe7,
-      0 0 12px #00ffe7,
-      0 0 20px #00ffe7,
-      0 0 30px #00ffe7;
-    color: #fff !important;
+    color: #000 !important;
     font-weight: bold;
   }
   .dark .text-neon {
-    text-shadow:
-      0 0 6px #00ffe7,
-      0 0 12px #00ffe7,
-      0 0 20px #00ffe7,
-      0 0 30px #00ffe7;
     color: #fff !important;
     font-weight: bold;
   }
 
   .text-neon-black {
-    text-shadow:
-      0 0 6px #000,
-      0 0 12px #000,
-      0 0 20px #000,
-      0 0 30px #000;
-    color: #fff !important;
+    color: #000 !important;
     font-weight: bold;
   }
   .dark .text-neon-black {
-    text-shadow:
-      0 0 6px #000,
-      0 0 12px #000,
-      0 0 20px #000,
-      0 0 30px #000;
     color: #fff !important;
     font-weight: bold;
   }
 
   .text-black-neon {
-    color: #111 !important;
-    text-shadow:
-      0 0 6px #00ffe7,
-      0 0 12px #00ffe7,
-      0 0 20px #00ffe7,
-      0 0 30px #00ffe7;
+    color: #000 !important;
     font-weight: bold;
   }
   .dark .text-black-neon {
     color: #fff !important;
-    text-shadow:
-      0 0 6px #00ffe7,
-      0 0 12px #00ffe7,
-      0 0 20px #00ffe7,
-      0 0 30px #00ffe7;
     font-weight: bold;
   }
 }

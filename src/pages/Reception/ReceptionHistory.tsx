@@ -99,7 +99,7 @@ export const ReceptionHistory: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Filters */}
-      <div className="bg-black/40 backdrop-blur-md rounded-xl p-4 border border-white/10">
+      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
             <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -108,7 +108,7 @@ export const ReceptionHistory: React.FC = () => {
               placeholder="Qidirish..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-black/40 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg text-black dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           </div>
           <div className="flex gap-2">
@@ -118,7 +118,7 @@ export const ReceptionHistory: React.FC = () => {
               placeholder="Dan"
               value={dateFrom}
               onChange={(e) => setDateFrom(e.target.value)}
-              className="px-4 py-2 bg-black/40 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+              className="px-4 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
             <input
               type="date"
@@ -126,11 +126,11 @@ export const ReceptionHistory: React.FC = () => {
               placeholder="Gacha"
               value={dateTo}
               onChange={(e) => setDateTo(e.target.value)}
-              className="px-4 py-2 bg-black/40 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+              className="px-4 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
             <button 
               onClick={() => loadHistory()}
-              className="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg hover:bg-cyan-500/30 flex items-center gap-2 border border-cyan-500/30"
+              className="px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 flex items-center gap-2 border border-primary-200 dark:border-primary-800"
             >
               <FunnelIcon className="w-5 h-5" />
               Filtr
@@ -140,55 +140,55 @@ export const ReceptionHistory: React.FC = () => {
       </div>
 
       {/* History Table */}
-      <div className="bg-black/40 backdrop-blur-md rounded-xl overflow-hidden border border-white/10">
+      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-black/20 border-b border-white/10">
+            <thead className="bg-gray-200 dark:bg-gray-900 border-b border-gray-300 dark:border-gray-700">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                   Sana
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                   Vaqt
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                   Bemor
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                   Shifokor
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                   Holat
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                   Davomiylik
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {filteredHistory.map((item) => (
-                <tr key={item.id} className="hover:bg-white/5">
+                <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-2">
                       <CalendarIcon className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-300">{item.date}</span>
+                      <span className="text-gray-600 dark:text-gray-300">{item.date}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-cyan-400 font-medium">{item.time}</td>
+                  <td className="px-4 py-4 text-primary-500 font-medium">{item.time}</td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-cyan-500/20 rounded-full flex items-center justify-center">
-                        <UserIcon className="w-4 h-4 text-cyan-400" />
+                      <div className="w-8 h-8 bg-primary-50 dark:bg-primary-900/20 rounded-full flex items-center justify-center">
+                        <UserIcon className="w-4 h-4 text-primary-500" />
                       </div>
                       <div>
-                        <div className="font-medium text-white">{item.patientName}</div>
-                        <div className="text-sm text-gray-400">{item.patientPhone}</div>
+                        <div className="font-medium text-black dark:text-white">{item.patientName}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{item.patientPhone}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-gray-300">{item.doctorName}</td>
+                  <td className="px-4 py-4 text-gray-600 dark:text-gray-300">{item.doctorName}</td>
                   <td className="px-4 py-4">{getStatusBadge(item.status)}</td>
-                  <td className="px-4 py-4 text-gray-300">
+                  <td className="px-4 py-4 text-gray-600 dark:text-gray-300">
                     {item.duration > 0 ? `${item.duration} daq` : '-'}
                   </td>
                 </tr>

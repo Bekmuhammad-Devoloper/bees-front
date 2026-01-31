@@ -33,38 +33,25 @@ export const ReceptionLayout: React.FC = () => {
     }
   }, [theme]);
 
-  const getBackgroundImage = () => {
-    if (theme === 'system') return '/tizimli.png';
-    if (theme === 'dark') return '/qorangi.png';
-    return '/yorug.png';
-  };
-
   return (
     <div 
-      className="min-h-screen"
-      style={{
-        backgroundImage: `url('${getBackgroundImage()}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="min-h-screen bg-white dark:bg-black text-black dark:text-white"
     >
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-full bg-black/30 backdrop-blur-md border-r border-white/10 transition-all duration-300 z-40 ${
+        className={`fixed left-0 top-0 h-full bg-gray-100 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 transition-all duration-300 z-40 ${
           sidebarCollapsed ? 'w-16' : 'w-64'
         }`}
       >
-        <div className="h-20 flex items-center justify-between px-4 border-b border-white/10">
+        <div className="h-20 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-800">
           {!sidebarCollapsed && (
             <div className="flex items-center gap-3">
               <img src="/logo.jpg" alt="Bee's Medical" className="w-12 h-12 object-contain rounded-lg" />
               <div>
-                <span className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400 drop-shadow-[0_0_10px_rgba(0,255,200,0.5)]">
+                <span className="text-lg font-bold text-black dark:text-white">
                   Bee's Medical
                 </span>
-                <p className="text-xs text-gray-400">Qabulxona</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Qabulxona</p>
               </div>
             </div>
           )}
@@ -73,11 +60,11 @@ export const ReceptionLayout: React.FC = () => {
           )}
           <button
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            className="p-2 hover:bg-white/10 rounded-lg absolute right-2 top-6"
+            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg absolute right-2 top-6"
             title="Yig'ish"
           >
             <ChevronLeftIcon
-              className={`w-5 h-5 text-gray-300 transition-transform ${
+              className={`w-5 h-5 text-gray-600 dark:text-gray-400 transition-transform ${
                 sidebarCollapsed ? 'rotate-180' : ''
               }`}
             />
@@ -92,8 +79,8 @@ export const ReceptionLayout: React.FC = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all mb-1 ${
                   isActive
-                    ? 'bg-gradient-to-r from-cyan-500/20 to-green-500/20 text-cyan-400 border border-cyan-500/30 shadow-[0_0_15px_rgba(0,255,200,0.2)]'
-                    : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                    ? 'bg-primary-500 text-white'
+                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white'
                 }`
               }
             >
@@ -108,22 +95,22 @@ export const ReceptionLayout: React.FC = () => {
 
       {/* Header */}
       <header
-        className={`fixed top-0 right-0 h-16 bg-black/30 backdrop-blur-md border-b border-white/10 z-30 transition-all duration-300 flex items-center justify-between px-6 ${
+        className={`fixed top-0 right-0 h-16 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 z-30 transition-all duration-300 flex items-center justify-between px-6 ${
           sidebarCollapsed ? 'left-16' : 'left-64'
         }`}
       >
         <div>
-          <h1 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400 drop-shadow-[0_0_10px_rgba(0,255,200,0.5)]">
+          <h1 className="text-lg font-semibold text-black dark:text-white">
             Bee's Medical
           </h1>
-          <p className="text-sm text-gray-400">{user?.name || 'Qabulxona xodimi'}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{user?.name || 'Qabulxona xodimi'}</p>
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="p-2 hover:bg-white/10 rounded-lg relative" title="Bildirishnomalar">
-            <BellIcon className="w-6 h-6 text-gray-300" />
+          <button className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg relative" title="Bildirishnomalar">
+            <BellIcon className="w-6 h-6 text-gray-600 dark:text-gray-400" />
           </button>
-          <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-green-500 rounded-full flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(0,255,200,0.4)]">
+          <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
             {user?.name?.charAt(0) || 'Q'}
           </div>
         </div>
@@ -131,7 +118,7 @@ export const ReceptionLayout: React.FC = () => {
 
       {/* Main Content */}
       <main
-        className={`transition-all duration-300 pt-20 min-h-screen ${
+        className={`transition-all duration-300 pt-20 min-h-screen bg-white dark:bg-black ${
           sidebarCollapsed ? 'ml-16' : 'ml-64'
         }`}
       >

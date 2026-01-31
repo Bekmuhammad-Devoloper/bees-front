@@ -44,9 +44,7 @@ export const AppointmentsPage: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
   const { language } = useAppStore();
-  const { getBackgroundImage } = useThemeStore();
   const t = translations[language] || translations.uz;
-  const backgroundUrl = getBackgroundImage();
   
   const tabs = [
     { key: 'all', label: t.all },
@@ -100,16 +98,7 @@ export const AppointmentsPage: React.FC = () => {
   };
 
   return (
-    <div 
-      className="min-h-screen bg-transparent"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <Header title={t.pageTitle} showBack />
       
       {/* Tabs */}

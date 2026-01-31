@@ -28,8 +28,6 @@ const typeIcons: Record<NotificationType, string> = {
 export const NotificationsPage: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
-  const { getBackgroundImage } = useThemeStore();
-  const backgroundUrl = getBackgroundImage();
   
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
@@ -106,16 +104,7 @@ export const NotificationsPage: React.FC = () => {
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   return (
-    <div 
-      className="min-h-screen"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <Header 
         title="Bildirishnomalar" 
         showBack 

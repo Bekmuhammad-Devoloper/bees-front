@@ -62,9 +62,7 @@ const serviceTypeColors: Record<ServiceType, string> = {
 export const ServicesPage: React.FC = () => {
   const navigate = useNavigate();
   const { language } = useAppStore();
-  const { getBackgroundImage } = useThemeStore();
   const t = translations[language] || translations.uz;
-  const backgroundUrl = getBackgroundImage();
   
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
@@ -106,16 +104,7 @@ export const ServicesPage: React.FC = () => {
   const serviceTypes: ServiceType[] = [ServiceType.LABORATORY, ServiceType.DIAGNOSTIC, ServiceType.HOME_VISIT, ServiceType.CONSULTATION];
 
   return (
-    <div 
-      className="min-h-screen bg-transparent"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <Header title={t.pageTitle} showBack />
       
       {/* Type Filter */}
@@ -201,7 +190,7 @@ export const ServicesPage: React.FC = () => {
                       <div className="flex items-center justify-between mt-3">
                         <div>
                           <span className="text-lg font-bold text-primary-500">
-                            {service.price?.toLocaleString() || '0'}
+                            {Math.floor(service.price || 0).toLocaleString('ru-RU')}
                           </span>
                           <span className="text-sm text-gray-600 ml-1">{t.currency}</span>
                         </div>

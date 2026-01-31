@@ -78,9 +78,7 @@ export const RoleRequestPage: React.FC = () => {
   const navigate = useNavigate();
   const { language } = useAppStore();
   const { user } = useAuthStore();
-  const { getBackgroundImage } = useThemeStore();
   const t = translations[language] || translations.uz;
-  const backgroundUrl = getBackgroundImage();
 
   const [selectedRole, setSelectedRole] = useState<RoleType>(null);
   const [loading, setLoading] = useState(false);
@@ -227,16 +225,7 @@ export const RoleRequestPage: React.FC = () => {
   };
 
   return (
-    <div 
-      className="min-h-screen"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       {/* Header */}
       <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-white/40 dark:border-gray-700/40 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">

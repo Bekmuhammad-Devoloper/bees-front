@@ -138,10 +138,10 @@ export const DriverVisits: React.FC = () => {
 
   const getStatusBadge = (status: string) => {
     const styles: Record<string, string> = {
-      ASSIGNED: 'bg-yellow-100 text-yellow-800',
-      IN_PROGRESS: 'bg-blue-100 text-blue-800',
-      COMPLETED: 'bg-green-100 text-green-800',
-      CANCELLED: 'bg-red-100 text-red-800',
+      ASSIGNED: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400',
+      IN_PROGRESS: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400',
+      COMPLETED: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400',
+      CANCELLED: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400',
     };
     const labels: Record<string, string> = {
       ASSIGNED: 'Belgilangan',
@@ -199,61 +199,69 @@ export const DriverVisits: React.FC = () => {
       )}
 
       {/* Pending Visits */}
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
             Kutilayotgan tashriflar ({pendingVisits.length})
           </h2>
         </div>
-        <div className="divide-y divide-gray-100">
-          {pendingVisits.map((visit) => (
-            <div
-              key={visit.id}
-              className={`p-4 ${visit.id === activeVisit ? 'bg-blue-50' : 'hover:bg-gray-50'}`}
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-gray-900">{visit.patientName}</span>
-                    {getStatusBadge(visit.status)}
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-gray-600">
-                    <ClockIcon className="w-4 h-4" />
-                    <span>{visit.time}</span>
-                  </div>
-                </div>
-                <a
-                  href={`tel:${visit.patientPhone}`}
-                  className="p-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200"
-                >
-                  <PhoneIcon className="w-5 h-5" />
-                </a>
-              </div>
-              <div className="flex items-center gap-1 text-sm text-gray-600 mb-3">
-                <MapPinIcon className="w-4 h-4" />
-                <span>{visit.address}</span>
-              </div>
-              {visit.id !== activeVisit && visit.status === 'ASSIGNED' && (
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleStart(visit.id)}
-                    className="flex-1 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center justify-center gap-1"
-                  >
-                    <PlayIcon className="w-4 h-4" />
-                    Boshlash
-                  </button>
-                  <button
-                    onClick={() => handleCancel(visit.id)}
-                    className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200"
-                  >
-                    <XMarkIcon className="w-5 h-5" />
-                  </button>
-                </div>
-              )}
+        <div className="divide-y divide-gray-100 dark:divide-gray-700">
+          {loading ? (
+            <div className="p-8 text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 mx-auto"></div>
+              <p className="mt-2 text-gray-600 dark:text-gray-400">Yuklanmoqda...</p>
             </div>
-          ))}
-          {pendingVisits.length === 0 && (
-            <div className="p-8 text-center text-gray-600">
+          ) : pendingVisits.length > 0 ? (
+            pendingVisits.map((visit) => (
+              <div
+                key={visit.id}
+                className={`p-4 ${visit.id === activeVisit ? 'bg-blue-50 dark:bg-blue-900/20' : 'hover:bg-gray-50 dark:hover:bg-gray-700/50'}`}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-medium text-gray-900 dark:text-white">{visit.patientName}</span>
+                      {getStatusBadge(visit.status)}
+                    </div>
+                    <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
+                      <ClockIcon className="w-4 h-4" />
+                      <span>{visit.time}</span>
+                    </div>
+                  </div>
+                  <a
+                    href={`tel:${visit.patientPhone}`}
+                    title="Qo'ng'iroq qilish"
+                    className="p-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg hover:bg-green-200 dark:hover:bg-green-900/50"
+                  >
+                    <PhoneIcon className="w-5 h-5" />
+                  </a>
+                </div>
+                <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  <MapPinIcon className="w-4 h-4" />
+                  <span>{visit.address}</span>
+                </div>
+                {visit.id !== activeVisit && visit.status === 'ASSIGNED' && (
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleStart(visit.id)}
+                      className="flex-1 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center justify-center gap-1"
+                    >
+                      <PlayIcon className="w-4 h-4" />
+                      Boshlash
+                    </button>
+                    <button
+                      onClick={() => handleCancel(visit.id)}
+                      title="Bekor qilish"
+                      className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600"
+                    >
+                      <XMarkIcon className="w-5 h-5" />
+                    </button>
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <div className="p-8 text-center text-gray-600 dark:text-gray-400">
               Kutilayotgan tashrif yo'q
             </div>
           )}
@@ -262,27 +270,27 @@ export const DriverVisits: React.FC = () => {
 
       {/* Completed Visits */}
       {completedVisits.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="p-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
               Tugallangan tashriflar ({completedVisits.length})
             </h2>
           </div>
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-gray-100 dark:divide-gray-700">
             {completedVisits.map((visit) => (
               <div key={visit.id} className="p-4 opacity-60">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-medium text-gray-900">{visit.patientName}</span>
+                      <span className="font-medium text-gray-900 dark:text-white">{visit.patientName}</span>
                       {getStatusBadge(visit.status)}
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
                       <MapPinIcon className="w-4 h-4" />
                       <span>{visit.address}</span>
                     </div>
                   </div>
-                  <span className="text-sm text-gray-600">{visit.time}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{visit.time}</span>
                 </div>
               </div>
             ))}

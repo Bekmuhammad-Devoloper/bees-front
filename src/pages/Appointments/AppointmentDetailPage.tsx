@@ -20,8 +20,6 @@ import type { Appointment } from '../../types';
 export const AppointmentDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { getBackgroundImage } = useThemeStore();
-  const backgroundUrl = getBackgroundImage();
   
   const [appointment, setAppointment] = useState<Appointment | null>(null);
   const [loading, setLoading] = useState(true);
@@ -68,16 +66,7 @@ export const AppointmentDetailPage: React.FC = () => {
 
   if (!appointment) {
     return (
-      <div 
-        className="min-h-screen bg-transparent"
-        style={{
-          backgroundImage: `url('${backgroundUrl}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
         <Header title="Qabul" showBack />
         <div className="p-4 text-center">
           <p className="text-gray-600">Qabul topilmadi</p>
@@ -89,16 +78,7 @@ export const AppointmentDetailPage: React.FC = () => {
   const canCancel = ['pending', 'confirmed'].includes(appointment.status);
 
   return (
-    <div 
-      className="min-h-screen pb-24 bg-transparent"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen pb-24 bg-white dark:bg-black text-black dark:text-white">
       <Header title="Qabul tafsilotlari" showBack />
       
       {/* Status Banner */}

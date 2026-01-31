@@ -60,9 +60,7 @@ export const ServiceDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { language } = useAppStore();
-  const { getBackgroundImage } = useThemeStore();
   const t = translations[language] || translations.uz;
-  const backgroundUrl = getBackgroundImage();
 
   const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
@@ -116,16 +114,7 @@ export const ServiceDetailPage: React.FC = () => {
 
   if (!service) {
     return (
-      <div 
-        className="min-h-screen bg-transparent"
-        style={{
-          backgroundImage: `url('${backgroundUrl}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
         <Header title={t.pageTitle} showBack />
         <div className="p-4 text-center">
           <p className="text-gray-600">{t.notFound}</p>
@@ -143,16 +132,7 @@ export const ServiceDetailPage: React.FC = () => {
     : (service.descriptionUz || service.description);
 
   return (
-    <div 
-      className="min-h-screen pb-24 bg-transparent"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen pb-24 bg-white dark:bg-black text-black dark:text-white">
       <Header title={t.pageTitle} showBack />
 
       {/* Service Header */}
@@ -163,7 +143,7 @@ export const ServiceDetailPage: React.FC = () => {
           <div className="flex items-center text-primary-500">
             <CurrencyDollarIcon className="w-5 h-5 mr-1" />
             <span className="font-bold text-lg">
-              {service.price?.toLocaleString() || '0'} {t.currency}
+              {Math.floor(service.price || 0).toLocaleString('ru-RU')} {t.currency}
             </span>
           </div>
           

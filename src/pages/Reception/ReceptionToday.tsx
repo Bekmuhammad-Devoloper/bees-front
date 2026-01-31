@@ -179,84 +179,84 @@ export const ReceptionToday: React.FC = () => {
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-        <div className="bg-black/40 backdrop-blur-md rounded-xl p-4 text-center border border-white/10">
-          <p className="text-3xl font-bold text-white">{stats.total}</p>
-          <p className="text-sm text-gray-300">Jami</p>
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700">
+          <p className="text-3xl font-bold text-black dark:text-white">{stats.total}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Jami</p>
         </div>
-        <div className="bg-yellow-500/20 backdrop-blur-md rounded-xl p-4 text-center border border-yellow-500/30">
-          <p className="text-3xl font-bold text-yellow-400">{stats.pending}</p>
-          <p className="text-sm text-gray-300">Kutilmoqda</p>
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 text-center border border-yellow-200 dark:border-yellow-800">
+          <p className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">{stats.pending}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Kutilmoqda</p>
         </div>
-        <div className="bg-cyan-500/20 backdrop-blur-md rounded-xl p-4 text-center border border-cyan-500/30">
-          <p className="text-3xl font-bold text-cyan-400">{stats.arrived}</p>
-          <p className="text-sm text-gray-300">Keldi</p>
+        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 text-center border border-blue-200 dark:border-blue-800">
+          <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stats.arrived}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Keldi</p>
         </div>
-        <div className="bg-purple-500/20 backdrop-blur-md rounded-xl p-4 text-center border border-purple-500/30">
-          <p className="text-3xl font-bold text-purple-400">{stats.inProgress}</p>
-          <p className="text-sm text-gray-300">Qabulda</p>
+        <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 text-center border border-purple-200 dark:border-purple-800">
+          <p className="text-3xl font-bold text-purple-600 dark:text-purple-400">{stats.inProgress}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Qabulda</p>
         </div>
-        <div className="bg-green-500/20 backdrop-blur-md rounded-xl p-4 text-center border border-green-500/30">
-          <p className="text-3xl font-bold text-green-400">{stats.completed}</p>
-          <p className="text-sm text-gray-300">Tugallangan</p>
+        <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 text-center border border-green-200 dark:border-green-800">
+          <p className="text-3xl font-bold text-green-600 dark:text-green-400">{stats.completed}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Tugallangan</p>
         </div>
-        <div className="bg-red-500/20 backdrop-blur-md rounded-xl p-4 text-center border border-red-500/30">
-          <p className="text-3xl font-bold text-red-400">{stats.noShow}</p>
-          <p className="text-sm text-gray-300">Kelmadi</p>
+        <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-4 text-center border border-red-200 dark:border-red-800">
+          <p className="text-3xl font-bold text-red-600 dark:text-red-400">{stats.noShow}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Kelmadi</p>
         </div>
       </div>
 
       {/* Appointments Table */}
-      <div className="bg-black/40 backdrop-blur-md rounded-xl overflow-hidden border border-white/10">
-        <div className="p-4 border-b border-white/10">
-          <h2 className="text-lg font-semibold text-white">Bugungi qabullar</h2>
+      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-black dark:text-white">Bugungi qabullar</h2>
         </div>
         {appointments.length === 0 ? (
           <div className="p-8 text-center">
             <ClockIcon className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-            <p className="text-gray-400">Bugun qabullar yo'q</p>
+            <p className="text-gray-500 dark:text-gray-400">Bugun qabullar yo'q</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-black/20 border-b border-white/10">
+              <thead className="bg-gray-200 dark:bg-gray-900 border-b border-gray-300 dark:border-gray-700">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                     Vaqt
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                     Bemor
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                     Shifokor
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                     Holat
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
                     Amallar
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                 {appointments.map((apt) => (
-                  <tr key={apt.id} className="hover:bg-white/5">
+                  <tr key={apt.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <ClockIcon className="w-4 h-4 text-gray-500" />
-                        <span className="font-medium text-cyan-400">{apt.time}</span>
+                        <span className="font-medium text-primary-500">{apt.time}</span>
                       </div>
                     </td>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-white">{apt.patientName}</div>
-                      <div className="text-sm text-gray-400 flex items-center gap-1">
+                      <div className="font-medium text-black dark:text-white">{apt.patientName}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                         <PhoneIcon className="w-3 h-3" />
                         {apt.patientPhone}
                       </div>
                     </td>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-white">{apt.doctorName}</div>
+                      <div className="font-medium text-black dark:text-white">{apt.doctorName}</div>
                       {apt.doctorSpecialization && (
-                        <div className="text-sm text-gray-400">{apt.doctorSpecialization}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{apt.doctorSpecialization}</div>
                       )}
                     </td>
                     <td className="px-4 py-4">{getStatusBadge(apt.status)}</td>

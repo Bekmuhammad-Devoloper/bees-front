@@ -10,7 +10,7 @@ interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const location = useLocation();
-  const { theme, getBackgroundImage } = useThemeStore();
+  const { theme } = useThemeStore();
   
   // Sahifalar ro'yxati - bu sahifalarda global Header ko'rsatiladi
   const showGlobalHeader = location.pathname === '/' || location.pathname === '/profile';
@@ -24,19 +24,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       root.classList.toggle('dark', theme === 'dark');
     }
   }, [theme]);
-
-  const backgroundUrl = getBackgroundImage();
   
   return (
     <div 
-      className="min-h-screen flex flex-col"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white"
     >
       {showGlobalHeader && <Header />}
       <main className="flex-1 pb-20">

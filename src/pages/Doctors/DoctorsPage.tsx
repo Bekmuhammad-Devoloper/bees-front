@@ -44,9 +44,7 @@ export const DoctorsPage: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { language } = useAppStore();
-  const { getBackgroundImage } = useThemeStore();
   const t = translations[language] || translations.uz;
-  const backgroundUrl = getBackgroundImage();
   
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -115,16 +113,7 @@ export const DoctorsPage: React.FC = () => {
   };
 
   return (
-    <div 
-      className="min-h-screen bg-transparent"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <Header title={t.pageTitle} showBack />
       
       <div className="p-4 space-y-4">

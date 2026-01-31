@@ -6,7 +6,7 @@ import { useThemeStore } from '../../store/themeStore';
 
 export const AdminLayout: React.FC = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const { theme, getBackgroundImage } = useThemeStore();
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -18,10 +18,8 @@ export const AdminLayout: React.FC = () => {
     }
   }, [theme]);
 
-  const backgroundUrl = getBackgroundImage();
-
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen overflow-hidden bg-white dark:bg-black text-black dark:text-white">
       {/* Fixed Sidebar - scroll bo'lmaydi */}
       <AdminSidebar
         collapsed={sidebarCollapsed}
@@ -33,16 +31,9 @@ export const AdminLayout: React.FC = () => {
       
       {/* Main Content Area - faqat bu scroll bo'ladi */}
       <main
-        className={`fixed top-16 bottom-0 right-0 overflow-y-auto transition-all duration-300 ${
+        className={`fixed top-16 bottom-0 right-0 overflow-y-auto transition-all duration-300 bg-white dark:bg-black ${
           sidebarCollapsed ? 'left-16' : 'left-64'
         }`}
-        style={{
-          backgroundImage: `url('${backgroundUrl}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat'
-        }}
       >
         {/* Content */}
         <div className="min-h-full">

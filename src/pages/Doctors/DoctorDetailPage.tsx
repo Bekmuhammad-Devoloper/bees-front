@@ -44,8 +44,6 @@ export const DoctorDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
-  const { getBackgroundImage } = useThemeStore();
-  const backgroundUrl = getBackgroundImage();
   
   const [doctor, setDoctor] = useState<Doctor | null>(null);
   const [schedule, setSchedule] = useState<DoctorSchedule[]>([]);
@@ -142,16 +140,7 @@ export const DoctorDetailPage: React.FC = () => {
 
   if (!doctor) {
     return (
-      <div 
-        className="min-h-screen bg-transparent"
-        style={{
-          backgroundImage: `url('${backgroundUrl}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
         <Header title="Shifokor" showBack />
         <div className="p-4 text-center">
           <p className="text-gray-600">Shifokor topilmadi</p>
@@ -161,16 +150,7 @@ export const DoctorDetailPage: React.FC = () => {
   }
 
   return (
-    <div 
-      className="min-h-screen pb-24 bg-transparent"
-      style={{
-        backgroundImage: `url('${backgroundUrl}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <div className="min-h-screen pb-24 bg-white dark:bg-black text-black dark:text-white">
       <Header title="Shifokor" showBack />
       
       {/* Doctor Info Card */}
